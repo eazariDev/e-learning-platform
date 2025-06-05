@@ -17,6 +17,7 @@ from django.urls import reverse_lazy
 
 # The URL to redirect students after log in to the platform.
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+LOGOUT_REDIRECT_URL = reverse_lazy('course_list')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,20 +46,41 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # local apps
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
+    
+    # third party apps
+    'embed_video',
+    'debug_toolbar',
+    'redisboard',
     
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    # to use the per-site cache
+    # 'django.middleware.cache.UpdateCacheMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
+    
+    # to use the per-site cache
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
+    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# per-site cache settings
+# CACHE_MIDDLEWARE_ALIAS = 'default'
+# CACHE_MIDDLEWARE_SECONDS = 60 * 15      # set the cache timeout to 15 minutes
+# CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 
 ROOT_URLCONF = 'educa.urls'
 
@@ -136,3 +158,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # media settings
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# Cache settings for memcache
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+#         'LOCATION': '127.0.0.1:11211',
+#     }
+# }
+
+
+# Cache settings for redis
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+    }
+}
+
+
+# django debug toolbar settings
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

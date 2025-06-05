@@ -1,6 +1,8 @@
 <!-- students/templates/students/course/detail.html -->
 {% extends "base.html" %}
 
+{% load cache %}
+
 {% block title %}{{object.title}}{% endblock title %}
 
 {% block content %}
@@ -24,11 +26,13 @@
         </ul>
     </div>
     <div class="module">
-        {% for content in module.contents.all %}
-            {% with item=content.item %}
-                <h2>{{item.title}}</h2>
-                {{item.render}}
-            {% endwith %}
-        {% endfor %}
+        {% cache 600 module_contents module %}
+            {% for content in module.contents.all %}
+                {% with item=content.item %}
+                    <h2>{{item.title}}</h2>
+                    {{item.render}}
+                {% endwith %}
+            {% endfor %}
+        {% endcache module_contents %}
     </div>
 {% endblock content %}

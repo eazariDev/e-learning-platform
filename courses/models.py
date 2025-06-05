@@ -8,6 +8,10 @@ from django.contrib.contenttypes.models import ContentType
 
 from .fields import OrderField
 
+from django.template.loader import render_to_string
+
+
+
 class Subject(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
@@ -113,12 +117,17 @@ class ItemBase(models.Model):
     title = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    
+        
     
     class Meta:
         abstract = True
         
-        
+    
+    def render(self):
+        return render_to_string(
+            f'courses/content/{self._meta.model_name}.html',
+            {'item': self}
+        )    
     
     def __str__(self):
         return self.title
