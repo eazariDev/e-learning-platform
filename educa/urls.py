@@ -37,6 +37,9 @@ urlpatterns = [
     
     path('api/', include('courses.api.urls', namespace='api')),
     
+    path('chat/', include('chat.urls', namespace='chat')),
+    
+    
 ]
 
 

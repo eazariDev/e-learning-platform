@@ -39,6 +39,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'daphne',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     # local apps
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
+    'chat.apps.ChatConfig',
     
     # third party apps
     'embed_video',
@@ -189,4 +193,17 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+# Settings for ASGI
+ASGI_APPLICATION = 'educa.asgi.application'
+
+# Settings for channel layer
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
 }
