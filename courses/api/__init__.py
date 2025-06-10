@@ -1,0 +1,1 @@
+# courses/api/__init__.py
