@@ -48,6 +48,11 @@ from django.utils import timezone
 # Fully asynchronous consumer
 from channels.generic.websocket import AsyncWebsocketConsumer
 
+from chat.models import Message
+
+from courses.models import Course
+
+
 class ChatConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
@@ -67,6 +72,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name, self.channel_name
         )
     
+
+    async def persist_message(self, message):
+        await Message.objects.acreate(
+            user=self.user, course_id=self.id, content=message
+        )
+
+
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
@@ -81,6 +93,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             }
         )
         
+        await self.persist_message(message)        
         # self.send(text_data=json.dumps({'message': message}))
         
         
