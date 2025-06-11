@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = '494*du0uz5%h4_&ll01rc(j7h1vvr8n*ixa817@mrt#h4sv1#_'
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://e-learning-platform-production.up.railway.app', 'http://e-learning-platform-production.up.railway.app', '*e-learning-platform-production.up.railway.app', 'e-learning-platform-production.up.railway.app']
 
 
 # Application definition
