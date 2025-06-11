@@ -11,7 +11,7 @@ ADMINS = [
     
 ]
 
-ALLOWED_HOSTS = ['https://gleaming-perfection-production-7b04.up.railway.app', 'http://gleaming-perfection-production-7b04.up.railway.app', '*gleaming-perfection-production-7b04.up.railway.app']
+ALLOWED_HOSTS = ['https://e-learning-platform-production.up.railway.app', 'http://e-learning-platform-production.up.railway.app', '*e-learning-platform-production.up.railway.app', 'e-learning-platform-production.up.railway.app']
 
 DATABASES = {
     'default': {
