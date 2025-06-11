@@ -11,7 +11,7 @@ ADMINS = [
     
 ]
 
-ALLOWED_HOSTS = ['https://e-learning-platform-production.up.railway.app', 'http://e-learning-platform-production.up.railway.app', '*e-learning-platform-production.up.railway.app', 'e-learning-platform-production.up.railway.app']
+ALLOWED_HOSTS = ['https://e-learning-platform.up.railway.app', 'http://e-learning-platform.up.railway.app', '*e-learning-platform.up.railway.app', 'e-learning-platform.up.railway.app']
 
 DATABASES = {
     'default': {
