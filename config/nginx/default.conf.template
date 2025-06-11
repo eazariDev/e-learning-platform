@@ -8,7 +8,7 @@ upstream daphne {
 
 server {
     listen              80;
-    server_name         *gleaming-perfection-production-7b04.up.railway.app gleaming-perfection-production-7b04.up.railway.app;
+    server_name         *e-learning-platform-production.up.railway.app e-learning-platform-production.up.railway.app;
     return      301     https://$host$request_uri; 
 }
 
@@ -16,7 +16,7 @@ server{
     listen              443 ssl;
     ssl_certificate     /code/educa/ssl/educa.crt;
     ssl_certificate_key /code/educa/ssl/educa.key;
-    server_name         *gleaming-perfection-production-7b04.up.railway.app gleaming-perfection-production-7b04.up.railway.app;
+    server_name         *e-learning-platform-production.up.railway.app e-learning-platform-production.up.railway.app;
     error_log           stderr warn;
     access_log          /dev/stdout main;
 
