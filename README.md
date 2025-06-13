@@ -3,8 +3,8 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV40HORdPM536v9y1o362uMc-MTH4tQNzuVA&s" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
--->
+<img src="log.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
+
 # E-LEARNING-PLATFORM
 
 <em></em>
